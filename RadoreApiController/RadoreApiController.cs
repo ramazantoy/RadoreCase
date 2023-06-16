@@ -11,16 +11,29 @@ public class RadoreApiController
     
     private RestClient _client;
 
- 
+    private List<string>? _accountsList;
+
+    public List<string>? AccountsList
+    {
+        get
+        {
+            return _accountsList;
+        }
+    }
 
     private RadoreApiController()
     {
         _client = new RestClient("https://intestapi.radore.com/api");
-    
-        // Bağlantı ayarları veya diğer ilgili kodlar buraya gelebilir
+        
+        UpdateAccountsList();
     }
 
-    public string? GetAllAccounts(string endpoint)
+    private void UpdateAccountsList()
+    {
+        _accountsList = GetAllAccountsToList("/account/get-all-accounts");
+    }
+
+    private string? GetAllAccountsToString(string endpoint)
     {
         var request = new RestRequest(endpoint);
         
@@ -31,7 +44,7 @@ public class RadoreApiController
         return allMembers;
     }
 
-    public List<string>? GetAllAccountsToList(string endpoint)
+    private List<string>? GetAllAccountsToList(string endpoint)
     {
         var request = new RestRequest(endpoint);
         
@@ -40,6 +53,7 @@ public class RadoreApiController
 
         return allMembers != null ? JsonConvert.DeserializeObject<List<string>>(allMembers) : null;
     }
+    
 
 
 
