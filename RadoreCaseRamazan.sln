@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RadoreCaseRamazan", "RadoreCaseRamazan.csproj", "{00FE7079-480B-45DB-9879-0605AD19FF63}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{00FE7079-480B-45DB-9879-0605AD19FF63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00FE7079-480B-45DB-9879-0605AD19FF63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00FE7079-480B-45DB-9879-0605AD19FF63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00FE7079-480B-45DB-9879-0605AD19FF63}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
