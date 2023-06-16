@@ -1,0 +1,122 @@
+﻿@page
+@using RadoreCaseRamazan.RadoreApiController
+@model IndexModel
+@{
+    ViewData["Title"] = "Account Settings";
+}
+
+<body>
+
+<button id="showAllMembersButton">Tüm Hesapları Göster</button>
+<button id="addMemberButton">Yeni Hesap Oluştur</button>
+
+<div>
+  <input type="text" id="hostingDomainName" placeholder="Hosting Domain Name" class="hidden">
+</div>
+
+<div>
+  <input type="text" id="hostingPackage" placeholder="Hosting Package" class="hidden">
+</div>
+
+<div>
+  <button id="addMemberDoneButton" class="hidden">Hesabı Oluştur</button>
+</div>
+
+</body>
+
+
+<style>
+#showAllMembersButton {
+  width: 200px;
+  height: 35px;
+}
+
+#addMemberButton {
+  width: 200px;
+  height: 35px;
+  position: relative;
+  left: 300px;
+}
+
+#hostingDomainName {
+  width: 200px;
+  height: 35px;
+  margin-top: 10px;
+  position: relative;
+  left: 505px;
+}
+
+#hostingPackage {
+  width: 200px;
+  height: 35px;
+  margin-top: 10px;
+  position: relative;
+  left: 505px;
+}
+
+#addMemberDoneButton {
+  width: 200px;
+  height: 35px;
+  margin-top: 10px;
+  position: relative;
+  left: 505px;
+}
+
+.hidden {
+  display: none;
+}
+</style>
+<ul id="AccountsList"></ul>
+
+@section Scripts {
+  <script>
+     document.getElementById("showAllMembersButton").addEventListener("click", function() {  @* Tüm Hesapları Göster Fonksiyonu burada çalışıyor. *@
+         
+         var members = @Html.Raw(Json.Serialize(RadoreApiController.Instance.AccountsList));//RadoreApiControllerdan tüm hesapların listesini alıyor.
+       
+         var listContainer = document.getElementById("AccountsList");//html sayfasında listcontainer'ı yakalıyor
+         
+         var showAccountsButton=document.getElementById("showAllMembersButton");
+       
+         // Önceki listeyi temizle 
+         
+         if (listContainer.firstChild){
+             
+             showAccountsButton.textContent="Tüm Hesapları Göster"
+               while (listContainer.firstChild) {
+                          listContainer.removeChild(listContainer.firstChild);
+                      }
+             }
+             
+       else{
+           
+              showAccountsButton.textContent="Tüm Hesapları Gizle"
+              for (var i = 0; i < members.length; i++) {
+                        var listItem = document.createElement("li");
+                        listItem.textContent = members[i];
+                        
+                        listItem.textContent= " " + members[i];
+                        
+                        listContainer.appendChild(listItem);
+                    }
+           }
+      
+     });
+     
+       document.getElementById("addMemberButton").addEventListener("click", function() {  @* Yeni hesap ekleme işlemi sırasında bu fonksiyon invoke edilmesi *@
+          var hostingDomainName = document.getElementById("hostingDomainName");
+           var hostingPackage = document.getElementById("hostingPackage");
+           var addMemberDoneButton = document.getElementById("addMemberDoneButton");
+      
+
+        hostingDomainName.classList.remove("hidden"); //Butonların görünür yapılması
+          hostingPackage.classList.remove("hidden");
+          addMemberDoneButton.classList.remove("hidden");
+      
+          });
+     
+     
+    </script>
+
+
+}

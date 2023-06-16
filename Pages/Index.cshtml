@@ -1,5 +1,4 @@
 ﻿@page
-@using RadoreCaseRamazan.RadoreApiController
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
@@ -9,31 +8,3 @@
     <h1 class="display-4">Hoşgeldiniz</h1>
 </div>
 
-<button id="showAllMembersButton">Tüm Hesapları Göster</button>
-
- <ul id="AccountsList"></ul>
-
-@section Scripts { 
-    <script>
-     document.getElementById("showAllMembersButton").addEventListener("click", function() {  @* Tüm Hesapları Göster Fonksiyonu burada çalışıyor. *@
-         
-         var members = @Html.Raw(Json.Serialize(RadoreApiController.Instance.AccountsList));//RadoreApiControllerdan tüm hesapların listesini alıyor.
-       
-         var listContainer = document.getElementById("AccountsList");//html sayfasında listcontainer'ı yakalıyor
-       
-         // Önceki listeyi temizle 
-         while (listContainer.firstChild) {
-             listContainer.removeChild(listContainer.firstChild);
-         }
-       
-         for (var i = 0; i < members.length; i++) {
-             var listItem = document.createElement("li");
-             listItem.textContent = members[i];
-             
-             listItem.textContent= " " + members[i];
-             
-             listContainer.appendChild(listItem);
-         }
-     });
-    </script>
-}
