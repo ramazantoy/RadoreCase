@@ -1,8 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "HzPDwcSTvB8Fz6eg8V4vd1CmbAxy84sQNuavv40LIDQC0Pf7V3kuwpbJuWBr2vEUc7F5fScWthYNho/YzyH5lA==",
+  "dgSpecHash": "smGzz8e9HLFxlIFC5lklRX2+Up8zZEwUm8XsxdPuirQFj4aoxGfe/jkpw2YGdgpQDTKNuHY0faSAAGmwFtTRlQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Ramo\\Documents\\GitHub\\radore\\RadoreCaseRamazan.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Ramo\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
+    "C:\\Users\\Ramo\\.nuget\\packages\\restsharp\\110.2.1-alpha.0.3\\restsharp.110.2.1-alpha.0.3.nupkg.sha512",
+    "C:\\Users\\Ramo\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "C:\\Users\\Ramo\\.nuget\\packages\\system.text.encodings.web\\7.0.0\\system.text.encodings.web.7.0.0.nupkg.sha512",
+    "C:\\Users\\Ramo\\.nuget\\packages\\system.text.json\\7.0.2\\system.text.json.7.0.2.nupkg.sha512"
+  ],
   "logs": []
 }

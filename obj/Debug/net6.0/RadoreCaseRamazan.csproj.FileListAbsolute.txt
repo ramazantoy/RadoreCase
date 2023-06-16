@@ -52,3 +52,9 @@ C:\Users\Ramo\Documents\GitHub\radore\obj\Debug\net6.0\refint\RadoreCaseRamazan.
 C:\Users\Ramo\Documents\GitHub\radore\obj\Debug\net6.0\RadoreCaseRamazan.pdb
 C:\Users\Ramo\Documents\GitHub\radore\obj\Debug\net6.0\RadoreCaseRamazan.genruntimeconfig.cache
 C:\Users\Ramo\Documents\GitHub\radore\obj\Debug\net6.0\ref\RadoreCaseRamazan.dll
+C:\Users\Ramo\Documents\GitHub\radore\bin\Debug\net6.0\RestSharp.dll
+C:\Users\Ramo\Documents\GitHub\radore\bin\Debug\net6.0\System.Text.Encodings.Web.dll
+C:\Users\Ramo\Documents\GitHub\radore\bin\Debug\net6.0\System.Text.Json.dll
+C:\Users\Ramo\Documents\GitHub\radore\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
+C:\Users\Ramo\Documents\GitHub\radore\obj\Debug\net6.0\RadoreCaseRamazan.csproj.CopyComplete
+C:\Users\Ramo\Documents\GitHub\radore\bin\Debug\net6.0\Newtonsoft.Json.dll
