@@ -1,31 +1,54 @@
-﻿@page
-@using RadoreCaseRamazan.RadoreApiController
-@model IndexModel
+﻿
+@page
+@model AccountSettings
 @{
     ViewData["Title"] = "Account Settings";
 }
+@using RadoreCaseRamazan.RadoreApiController
+
 
 <body>
+  <div class="left-align">
+    <div>
+      <button id="showAllMembersButton">Tüm Hesapları Göster</button>
+    </div>
+    <div>
+      <ul id="AccountsList"></ul>
+    </div>
+  </div>
 
-<button id="showAllMembersButton">Tüm Hesapları Göster</button>
-<button id="addMemberButton">Yeni Hesap Oluştur</button>
+<div class="right-align">
+ 
+  <button id="addMemberButton" type="submit" >Yeni Hesap Oluştur</button>
+  
+<form method="post">
+  <div>
+    <input type="text" id="hostingDomainName" name="hostingDomainName" placeholder="Hosting Domain Name" class="hidden">
+  </div>
+  <div>
+    <input type="text" id="hostingPackage" name="hostingPackage" placeholder="Hosting Package" class="hidden">
+  </div>
+  <div>
+    <button id="addMemberDoneButton" class="hidden" type="submit" asp-page-handler="CreateAccount">Hesabı Oluştur</button>
+  </div>
+</form>
 
-<div>
-  <input type="text" id="hostingDomainName" placeholder="Hosting Domain Name" class="hidden">
 </div>
-
-<div>
-  <input type="text" id="hostingPackage" placeholder="Hosting Package" class="hidden">
-</div>
-
-<div>
-  <button id="addMemberDoneButton" class="hidden">Hesabı Oluştur</button>
-</div>
-
 </body>
 
 
+
 <style>
+
+  .left-align {
+    float: left;
+  }
+
+  .right-align {
+    float: right;
+    position: relative;
+     right: 800px; 
+  }
 #showAllMembersButton {
   width: 200px;
   height: 35px;
@@ -36,6 +59,8 @@
   height: 35px;
   position: relative;
   left: 300px;
+
+
 }
 
 #hostingDomainName {
@@ -43,7 +68,7 @@
   height: 35px;
   margin-top: 10px;
   position: relative;
-  left: 505px;
+  left: 300px;
 }
 
 #hostingPackage {
@@ -51,7 +76,7 @@
   height: 35px;
   margin-top: 10px;
   position: relative;
-  left: 505px;
+  left: 300px;
 }
 
 #addMemberDoneButton {
@@ -59,14 +84,26 @@
   height: 35px;
   margin-top: 10px;
   position: relative;
-  left: 505px;
+  left: 300px;
 }
+#AccountsList{
+width: 200px;
+height: 35px;
+}
+
+
 
 .hidden {
   display: none;
 }
 </style>
-<ul id="AccountsList"></ul>
+
+@if (TempData["Message"] != null)
+{
+    <script>
+        alert('@TempData["Message"]');
+    </script>
+}
 
 @section Scripts {
   <script>
@@ -112,8 +149,39 @@
         hostingDomainName.classList.remove("hidden"); //Butonların görünür yapılması
           hostingPackage.classList.remove("hidden");
           addMemberDoneButton.classList.remove("hidden");
-      
+      //  
           });
+       
+       
+        document.getElementById("addMemberDoneButton").addEventListener("click", function() {
+          
+         var hostDomainName=document.getElementById("hostingDomainName").value;
+         
+      
+         
+         var hostingPackage=document.getElementById("hostingPackage").value;
+            console.log(hostDomainName);
+                  console.log(hostingPackage);
+         
+         if (hostDomainName.length<=0){
+         
+           var result = window.confirm("Hosting Domain İsmi Boş Olamaz!");
+           return;
+           }
+         
+         else if (hostingPackage.length<=0){
+           
+           var result = window.confirm("Hosting Package İsmi Boş Olamaz!");
+           return;
+          }
+         
+     
+          });
+       
+        
+        
+        
+        
      
      
     </script>

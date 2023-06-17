@@ -51,7 +51,20 @@ public class RadoreApiController
         string? allMembers = _client.Execute(request).Content;
 
 
+        Console.WriteLine(allMembers);
         return allMembers != null ? JsonConvert.DeserializeObject<List<string>>(allMembers) : null;
+    }
+
+    public bool IsAccountsContainThisHosting(string hostingName)
+    {
+        if (_accountsList == null) return false;
+        
+        foreach (var accountHostingName in _accountsList)
+        {
+            if (accountHostingName.Equals(hostingName)) return true;
+        }
+
+        return false;
     }
     
 
