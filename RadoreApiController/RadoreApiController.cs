@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Nodes;
+using Newtonsoft.Json;
 using RestSharp;
 
 namespace RadoreCaseRamazan.RadoreApiController;
@@ -10,34 +11,26 @@ public class RadoreApiController
     public static RadoreApiController Instance => _instance.Value;
     
     private RestClient _client;
+    
 
-    private List<string>? _accountsList;
+    private string? _addAccountEndPoint;
 
-    public List<string>? AccountsList
-    {
-        get
-        {
-            return _accountsList;
-        }
-    }
+    public List<string>? AccountsList => GetAllAccountsToList("/account/get-all-accounts");
 
     private RadoreApiController()
     {
         _client = new RestClient("https://intestapi.radore.com/api");
-        
-        UpdateAccountsList();
+
+        _addAccountEndPoint = "/account/create-account";
     }
 
-    private void UpdateAccountsList()
-    {
-        _accountsList = GetAllAccountsToList("/account/get-all-accounts");
-    }
+ 
 
     private string? GetAllAccountsToString(string endpoint)
     {
         var request = new RestRequest(endpoint);
         
-        string? allMembers = _client.Execute(request).Content;
+        string? allMembers =_client.Execute(request).Content;
         
         Console.WriteLine(allMembers);
         
@@ -51,12 +44,14 @@ public class RadoreApiController
         string? allMembers = _client.Execute(request).Content;
 
 
-        Console.WriteLine(allMembers);
+       // Console.WriteLine(allMembers);
         return allMembers != null ? JsonConvert.DeserializeObject<List<string>>(allMembers) : null;
     }
 
     public bool IsAccountsContainThisHosting(string hostingName)
     {
+        List<string>? _accountsList = GetAllAccountsToList("/account/get-all-accounts");
+        
         if (_accountsList == null) return false;
         
         foreach (var accountHostingName in _accountsList)
@@ -66,7 +61,55 @@ public class RadoreApiController
 
         return false;
     }
-    
+
+    public async Task AddNewAccount(string hostingName, string hostingPackage)
+    {
+
+        string endpoint = "/account/create-account";
+        var request = new RestRequest(endpoint,Method.Post);
+
+        request.AddJsonBody(new
+        {
+            HostingDomainName = hostingName,
+            HostingPackage = hostingPackage
+        });
+
+        var response = await _client.ExecuteAsync(request);
+
+        if (!response.IsSuccessful)
+        {
+            Console.WriteLine("İstek hatalı" + response.StatusCode);
+        }
+
+        await RemoveAccount("test4");
+        /*else
+        {
+          string jsonResponse = response.Content;
+            
+            Console.WriteLine(jsonResponse);
+        }*/
+
+
+    }
+
+    public async Task RemoveAccount(string hostingName)
+    {
+        string endpoint = "/account/delete-account";
+        var request = new RestRequest(endpoint,Method.Post);
+        
+        request.AddJsonBody(new
+        {
+            HostingDomainName = hostingName,
+        });
+        
+        var response = await _client.ExecuteAsync(request);
+
+        if (!response.IsSuccessful)
+        {
+            Console.WriteLine("İstek hatalı" + response.StatusCode);
+        }
+    }
+
 
 
 

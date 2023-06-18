@@ -1,0 +1,46 @@
+﻿@page
+@model RadoreCaseRamazan.Pages.RemoveAccount
+
+@{
+    ViewData["Title"] = "Account Settings";
+}
+
+<body>
+
+<div class="align-middle">
+    <form method="post">
+        <div>
+            <input type="text" id="hostingDomainName" name="hostingDomainName" placeholder="Hosting Domain Name">
+              <button id="removeMemberButton" type="submit" asp-page-handler="RemoveAccount">Hesabı Sil</button>
+        </div>
+    </form>
+</div>
+
+</body>
+
+<style>
+
+#hostingDomainName {
+  width: 200px;
+  height: 35px;
+}
+#removeMemberButton{
+width: 100px;
+height: 35px;
+}
+
+
+
+
+.hidden {
+  display: none;
+}
+</style>
+
+@if (TempData["Message"] != null)
+{
+    <script>
+        alert('@TempData["Message"]');
+    </script>
+}
+
