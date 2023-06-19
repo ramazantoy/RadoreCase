@@ -81,8 +81,6 @@ public class RadoreApiController
         {
            // Console.WriteLine("İstek hatalı" + response.StatusCode);
         }
-
-        await RemoveAccount("test4");
         /*else
         {
           string jsonResponse = response.Content;
