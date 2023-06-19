@@ -21,7 +21,7 @@ public class RemoveAccount : PageModel
 
         string hostDomainName = Request.Form["hostingDomainName"];
         
-        Console.WriteLine(hostDomainName);
+//        Console.WriteLine(hostDomainName);
 
         if (!RadoreApiController.RadoreApiController.Instance.IsAccountsContainThisHosting(hostDomainName))
         {

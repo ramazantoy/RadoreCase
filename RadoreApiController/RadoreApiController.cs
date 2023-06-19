@@ -1,5 +1,6 @@
 ﻿using System.Text.Json.Nodes;
 using Newtonsoft.Json;
+using RadoreCaseRamazan.Models;
 using RestSharp;
 
 namespace RadoreCaseRamazan.RadoreApiController;
@@ -78,7 +79,7 @@ public class RadoreApiController
 
         if (!response.IsSuccessful)
         {
-            Console.WriteLine("İstek hatalı" + response.StatusCode);
+           // Console.WriteLine("İstek hatalı" + response.StatusCode);
         }
 
         await RemoveAccount("test4");
@@ -106,8 +107,24 @@ public class RadoreApiController
 
         if (!response.IsSuccessful)
         {
-            Console.WriteLine("İstek hatalı" + response.StatusCode);
+           // Console.WriteLine("İstek hatalı" + response.StatusCode);
         }
+    }
+
+    public AccountData? GetAccountData(string hostingDomainName)
+    {
+        string endpoint = "/account/get-account?hostingDomainName="+hostingDomainName;
+        var request = new RestRequest(endpoint,Method.Get);
+
+        var response = _client.Execute(request);
+        var content = response.Content;
+        if (content != null)
+        {
+            var accountData = JsonConvert.DeserializeObject<AccountData>(content);
+            return accountData;
+        }
+
+        return null;
     }
 
 

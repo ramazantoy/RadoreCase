@@ -1,0 +1,82 @@
+﻿@page
+@model RadoreCaseRamazan.Pages.GetAccountData
+
+
+@{
+    ViewData["Title"] = "Account Data";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Account Data</title>
+    <style>
+    
+        .box {
+            width: 350px;
+            min-height: 50px;
+            max-height: 200px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+            overflow: auto;
+        }
+           h1 {
+                    font-size: 15px;
+                }
+    </style>
+</head>
+<body>
+
+
+
+@if (Model.AccountData != null)
+{
+    <h1>Hesap Verisi Aşağıdaki Gibidir.</h1>
+    <div class="container">
+
+        <div class="box">
+            <p>Hosting Alan Adı: @Model.AccountData.HostingDomainName</p>
+        </div>
+        <div class="box">
+            <p>Hosting Paketi: @Model.AccountData.HostingPackage</p>
+        </div>
+        <div class="box">
+            <p>Mesaj: @Model.AccountData.Message</p>
+        </div>
+        <div class="box">
+            <p>Gelen Bağlantılar: @Model.AccountData.IncomingConnections</p>
+        </div>
+        <div class="box">
+            <p>CPU Yükü: @Model.AccountData.CpuLoad</p>
+        </div>
+        <div class="box">
+            <p>Max RAM: @Model.AccountData.RamMax</p>
+        </div>
+        <div class="box">
+            <p>RAM Kullanımı: @Model.AccountData.RamUsage</p>
+        </div>
+    </div>
+}
+else
+{
+
+    <div class="align-middle">
+        <form method="post">
+            <div>
+                <input type="text" id="hostingDomainName" name="hostingDomainName" placeholder="Hosting Domain Name">
+                <button id="removeMemberButton" type="submit" asp-page-handler="GetAccount">Hesabı Görüntüle</button>
+            </div>
+        </form>
+    </div>
+}
+
+@if (TempData["Message"] != null)
+{
+    <script>
+        alert('@TempData["Message"]');
+    </script>
+}
+
+
+</body>
+</html>
