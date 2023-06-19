@@ -6,14 +6,13 @@
 }
 @using RadoreCaseRamazan.RadoreApiController
 
-
 <body>
   <div class="left-align">
     <div>
       <button id="showAllMembersButton">Tüm Hesapları Göster</button>
     </div>
     <div>
-      <ul id="AccountsList"></ul>
+      <ul  class="AccountListView " id="AccountsList"></ul>
     </div>
   </div>
 
@@ -95,6 +94,9 @@ height: 35px;
 
 .hidden {
   display: none;
+}
+.AccountListView{
+color: white;
 }
 </style>
 

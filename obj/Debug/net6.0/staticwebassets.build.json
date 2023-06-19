@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "czs0G0SCk9tLYHQ+Tald1eJlbo29RIlef2vA3upSU1Q=",
+  "Hash": "vH0fAjzGTO+8AODP8hkq4yjjQ5kIlP967I47hDHIDuc=",
   "Source": "RadoreCaseRamazan",
   "BasePath": "_content/RadoreCaseRamazan",
   "Mode": "Default",
@@ -83,6 +83,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\Ramo\\Documents\\GitHub\\radore\\wwwroot\\images\\background.png",
+      "SourceId": "RadoreCaseRamazan",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Ramo\\Documents\\GitHub\\radore\\wwwroot\\",
+      "BasePath": "_content/RadoreCaseRamazan",
+      "RelativePath": "images/background.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\background.png"
     },
     {
       "Identity": "C:\\Users\\Ramo\\Documents\\GitHub\\radore\\wwwroot\\js\\site.js",
